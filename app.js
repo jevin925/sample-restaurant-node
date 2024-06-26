@@ -13,7 +13,7 @@ const passportSetup = require('./config/passport-setup')
 /**
 * port for this server
 */
-port = 3000
+port = 8000
 
 /**
 * call ejs template
@@ -40,7 +40,7 @@ app.use(session({
     secret: 'A21E14d4_g1fdz55415_6ZRT41641ZE_561erf1e_2g1fg1fg0_e',
     resave: false,
     saveUninitialized: false,
-    cookie: {maxAge: 60000 * 20}
+    cookie: { maxAge: 60000 * 20 }
 }))
 
 /**
@@ -57,7 +57,7 @@ app.use(passport.session())
 /**
 * Save User Object, using for all application
 */
-app.get('*', (req,res,next)=> {
+app.get('*', (req, res, next) => {
     res.locals.user = req.user || null
     next()
 })
@@ -65,8 +65,8 @@ app.get('*', (req,res,next)=> {
 /**
 * this route for Home Page
 */
-app.get('/', (req,res)=> {
-   res.render('index',{title:"Home Page"})
+app.get('/', (req, res) => {
+    res.render('index', { title: "Home Page" })
 })
 
 /**
@@ -132,13 +132,13 @@ app.use('/users', users)
 /**
 * The 404 route page
 */
-app.get('*', function(req, res){
+app.get('*', function (req, res) {
     res.status(404).redirect('/');
 });
 
 /**
 * listen to port 3000
 */
-app.listen(port, ()=> {
+app.listen(port, () => {
     console.log('this application is wokring on port 3000')
 })
